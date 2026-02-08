@@ -1,0 +1,3125 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS</title>
+  <meta name="description" content="Se presentan los ejercicios de práctica de visualización de datos en R, correspondiente a la sección de transformación y ordenación de datos" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Se presentan los ejercicios de práctica de visualización de datos en R, correspondiente a la sección de transformación y ordenación de datos" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS" />
+  
+  <meta name="twitter:description" content="Se presentan los ejercicios de práctica de visualización de datos en R, correspondiente a la sección de transformación y ordenación de datos" />
+  
+
+<meta name="author" content="sergio Rafael Rada De La Cruz" />
+
+
+<meta name="date" content="2026-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="ejercicio-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Ejercicio 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#carga-de-datos"><i class="fa fa-check"></i><b>1.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#desarrollo"><i class="fa fa-check"></i><b>1.2</b> Desarrollo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ejercicio-2.html"><a href="ejercicio-2.html"><i class="fa fa-check"></i><b>2</b> Ejercicio 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ejercicio-2.html"><a href="ejercicio-2.html#carga-de-datos-1"><i class="fa fa-check"></i><b>2.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="2.2" data-path="ejercicio-2.html"><a href="ejercicio-2.html#desarrollo-1"><i class="fa fa-check"></i><b>2.2</b> Desarrollo</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ejercicio-2.html"><a href="ejercicio-2.html#inciso-1"><i class="fa fa-check"></i><b>2.2.1</b> Inciso 1</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ejercicio-2.html"><a href="ejercicio-2.html#inciso-2"><i class="fa fa-check"></i><b>2.2.2</b> Inciso 2</a></li>
+<li class="chapter" data-level="2.2.3" data-path="ejercicio-2.html"><a href="ejercicio-2.html#inciso-3"><i class="fa fa-check"></i><b>2.2.3</b> Inciso 3</a></li>
+<li class="chapter" data-level="2.2.4" data-path="ejercicio-2.html"><a href="ejercicio-2.html#inciso-4"><i class="fa fa-check"></i><b>2.2.4</b> Inciso 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ejercicio-para-entregar.html"><a href="ejercicio-para-entregar.html"><i class="fa fa-check"></i><b>3</b> Ejercicio para entregar</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ejercicio-para-entregar.html"><a href="ejercicio-para-entregar.html#carga-de-datos-2"><i class="fa fa-check"></i><b>3.1</b> Carga de datos</a></li>
+<li class="chapter" data-level="3.2" data-path="ejercicio-para-entregar.html"><a href="ejercicio-para-entregar.html#desarrollo-2"><i class="fa fa-check"></i><b>3.2</b> Desarrollo</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">EJERCICIOS PRIMER CORTE VISUALIZACIÓN DE DATOS</h1>
+<p class="author"><em>sergio Rafael Rada De La Cruz</em></p>
+<p class="date"><em>2026-02-07</em></p>
+</div>
+<div id="ejercicio-1" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Ejercicio 1<a href="index.html#ejercicio-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A partir del dataset df, el cual trata de los incendios forestales, realice las siguientes tareas:</p>
+<ol style="list-style-type: decimal">
+<li>Filtrar los registros para incluir únicamente los incendios ocurridos en el estado de Idaho.</li>
+<li>Seleccionar únicamente las columnas YEAR_, CAUSE y TOTALACRES.</li>
+<li>Renombrar estas columnas con nombres más claros y descriptivos.</li>
+<li>Agrupar la información por CAUSE y YEAR_.</li>
+<li>Resumir el total de acres quemados para cada combinación de causa y año.</li>
+<li>Elaborar una visualización que muestre los resultados de manera clara.</li>
+</ol>
+<div id="carga-de-datos" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Carga de datos<a href="index.html#carga-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;C:/Users/User/Documents/PROYECTOS RSTUDIO/DATA SETS/RDataSets/RDataSets/StudyArea.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="desarrollo" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Desarrollo<a href="index.html#desarrollo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a>  <span class="fu">filter</span>(STATE<span class="sc">==</span><span class="st">&quot;Idaho&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a>  <span class="fu">select</span>(AÑO<span class="at">_INCENDIO=</span>YEAR_, <span class="at">CAUSA_INCENDIO=</span>CAUSE, <span class="at">TOTAL_ACRES_QUEMADOS=</span>TOTALACRES) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a>  <span class="fu">group_by</span>(CAUSA_INCENDIO, AÑO_INCENDIO) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Media_acres=</span><span class="fu">mean</span>(TOTAL_ACRES_QUEMADOS),</span>
+<span id="cb2-6"><a href="index.html#cb2-6" tabindex="-1"></a>            <span class="at">ds_acres=</span><span class="fu">sd</span>(TOTAL_ACRES_QUEMADOS),</span>
+<span id="cb2-7"><a href="index.html#cb2-7" tabindex="-1"></a>            <span class="at">mediana_acres=</span><span class="fu">median</span>(TOTAL_ACRES_QUEMADOS),</span>
+<span id="cb2-8"><a href="index.html#cb2-8" tabindex="-1"></a>            <span class="at">min_acres=</span><span class="fu">min</span>(TOTAL_ACRES_QUEMADOS),</span>
+<span id="cb2-9"><a href="index.html#cb2-9" tabindex="-1"></a>            <span class="at">max_acres=</span><span class="fu">max</span>(TOTAL_ACRES_QUEMADOS),</span>
+<span id="cb2-10"><a href="index.html#cb2-10" tabindex="-1"></a>            <span class="at">q1_acres=</span><span class="fu">quantile</span>(TOTAL_ACRES_QUEMADOS)[<span class="dv">1</span>],</span>
+<span id="cb2-11"><a href="index.html#cb2-11" tabindex="-1"></a>            <span class="at">q3_acres=</span><span class="fu">quantile</span>(TOTAL_ACRES_QUEMADOS)[<span class="dv">3</span>]) <span class="ot">-&gt;</span>df_ejercicio1</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:450px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 14px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-3">Table 1.1: </span><span id="tab:unnamed-chunk-3">Table 1.2: </span>Resultados ejercicio 1
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+CAUSA_INCENDIO
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+AÑO_INCENDIO
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+Media_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+ds_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+mediana_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+min_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+max_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+q1_acres
+</th>
+<th style="text-align:center;font-weight: bold;position: sticky; top:0; background-color: #FFFFFF;">
+q3_acres
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1980
+</td>
+<td style="text-align:center;">
+517.803597
+</td>
+<td style="text-align:center;">
+1.694831e+03
+</td>
+<td style="text-align:center;">
+6.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+15560.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+6.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1981
+</td>
+<td style="text-align:center;">
+933.457021
+</td>
+<td style="text-align:center;">
+3.825587e+03
+</td>
+<td style="text-align:center;">
+15.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+37730.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+15.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1982
+</td>
+<td style="text-align:center;">
+250.119118
+</td>
+<td style="text-align:center;">
+6.722048e+02
+</td>
+<td style="text-align:center;">
+7.50
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+4745.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+7.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1983
+</td>
+<td style="text-align:center;">
+339.735915
+</td>
+<td style="text-align:center;">
+1.253732e+03
+</td>
+<td style="text-align:center;">
+10.50
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+10500.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+10.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1984
+</td>
+<td style="text-align:center;">
+265.020144
+</td>
+<td style="text-align:center;">
+7.082504e+02
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5520.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1985
+</td>
+<td style="text-align:center;">
+407.397006
+</td>
+<td style="text-align:center;">
+1.693777e+03
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+18585.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1986
+</td>
+<td style="text-align:center;">
+118.955647
+</td>
+<td style="text-align:center;">
+5.148097e+02
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5002.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1987
+</td>
+<td style="text-align:center;">
+93.178780
+</td>
+<td style="text-align:center;">
+4.347462e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5300.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1988
+</td>
+<td style="text-align:center;">
+2383.539118
+</td>
+<td style="text-align:center;">
+2.774656e+04
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+427680.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1989
+</td>
+<td style="text-align:center;">
+69.705473
+</td>
+<td style="text-align:center;">
+5.974787e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+11000.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1990
+</td>
+<td style="text-align:center;">
+383.117472
+</td>
+<td style="text-align:center;">
+4.414106e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+71731.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1991
+</td>
+<td style="text-align:center;">
+64.117042
+</td>
+<td style="text-align:center;">
+3.265620e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+2955.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1992
+</td>
+<td style="text-align:center;">
+546.999486
+</td>
+<td style="text-align:center;">
+9.005925e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+177544.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1993
+</td>
+<td style="text-align:center;">
+15.759004
+</td>
+<td style="text-align:center;">
+1.760988e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+2806.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1994
+</td>
+<td style="text-align:center;">
+202.060391
+</td>
+<td style="text-align:center;">
+2.569693e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+84677.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1995
+</td>
+<td style="text-align:center;">
+344.379412
+</td>
+<td style="text-align:center;">
+1.736445e+03
+</td>
+<td style="text-align:center;">
+3.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+20500.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+3.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1996
+</td>
+<td style="text-align:center;">
+432.732964
+</td>
+<td style="text-align:center;">
+2.337182e+03
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+25315.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1997
+</td>
+<td style="text-align:center;">
+56.452976
+</td>
+<td style="text-align:center;">
+1.954490e+02
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1478.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1998
+</td>
+<td style="text-align:center;">
+140.686829
+</td>
+<td style="text-align:center;">
+9.511555e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+9918.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+1999
+</td>
+<td style="text-align:center;">
+145.764691
+</td>
+<td style="text-align:center;">
+9.246913e+02
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+16266.3
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2000
+</td>
+<td style="text-align:center;">
+304.265734
+</td>
+<td style="text-align:center;">
+2.047859e+03
+</td>
+<td style="text-align:center;">
+0.45
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+31316.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2001
+</td>
+<td style="text-align:center;">
+111.183656
+</td>
+<td style="text-align:center;">
+6.343607e+02
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+8904.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2002
+</td>
+<td style="text-align:center;">
+27.298084
+</td>
+<td style="text-align:center;">
+1.586931e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+2120.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2003
+</td>
+<td style="text-align:center;">
+297.619109
+</td>
+<td style="text-align:center;">
+1.791910e+03
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+25007.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2004
+</td>
+<td style="text-align:center;">
+25.623855
+</td>
+<td style="text-align:center;">
+1.027188e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+817.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2005
+</td>
+<td style="text-align:center;">
+521.418211
+</td>
+<td style="text-align:center;">
+3.291711e+03
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+40483.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2006
+</td>
+<td style="text-align:center;">
+533.620596
+</td>
+<td style="text-align:center;">
+4.188152e+03
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+61929.1
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2007
+</td>
+<td style="text-align:center;">
+350.372889
+</td>
+<td style="text-align:center;">
+2.628756e+03
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+45862.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2008
+</td>
+<td style="text-align:center;">
+110.406074
+</td>
+<td style="text-align:center;">
+6.708337e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+7831.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2009
+</td>
+<td style="text-align:center;">
+32.274474
+</td>
+<td style="text-align:center;">
+2.292115e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+3026.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2010
+</td>
+<td style="text-align:center;">
+370.867795
+</td>
+<td style="text-align:center;">
+5.504310e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+108832.9
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2011
+</td>
+<td style="text-align:center;">
+63.656599
+</td>
+<td style="text-align:center;">
+7.767369e+02
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+15775.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2012
+</td>
+<td style="text-align:center;">
+725.719412
+</td>
+<td style="text-align:center;">
+8.608011e+03
+</td>
+<td style="text-align:center;">
+2.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+146832.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+2.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2013
+</td>
+<td style="text-align:center;">
+162.263402
+</td>
+<td style="text-align:center;">
+1.463046e+03
+</td>
+<td style="text-align:center;">
+0.40
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+23406.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2014
+</td>
+<td style="text-align:center;">
+34.166866
+</td>
+<td style="text-align:center;">
+3.258851e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5011.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2015
+</td>
+<td style="text-align:center;">
+141.618155
+</td>
+<td style="text-align:center;">
+9.176076e+02
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+10845.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Human
+</td>
+<td style="text-align:center;width: 20em; ">
+2016
+</td>
+<td style="text-align:center;">
+841.810517
+</td>
+<td style="text-align:center;">
+1.236872e+04
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+188404.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1980
+</td>
+<td style="text-align:center;">
+523.636585
+</td>
+<td style="text-align:center;">
+1.715754e+03
+</td>
+<td style="text-align:center;">
+0.55
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+8950.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1981
+</td>
+<td style="text-align:center;">
+1947.840141
+</td>
+<td style="text-align:center;">
+7.226118e+03
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+74030.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1982
+</td>
+<td style="text-align:center;">
+409.290291
+</td>
+<td style="text-align:center;">
+1.652043e+03
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+14690.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1983
+</td>
+<td style="text-align:center;">
+1423.292308
+</td>
+<td style="text-align:center;">
+3.983337e+03
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+27360.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1984
+</td>
+<td style="text-align:center;">
+1065.236719
+</td>
+<td style="text-align:center;">
+4.133776e+03
+</td>
+<td style="text-align:center;">
+2.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+25840.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+2.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1985
+</td>
+<td style="text-align:center;">
+1337.591139
+</td>
+<td style="text-align:center;">
+3.898585e+03
+</td>
+<td style="text-align:center;">
+3.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+28883.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+3.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1986
+</td>
+<td style="text-align:center;">
+416.578816
+</td>
+<td style="text-align:center;">
+3.031769e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+54117.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1987
+</td>
+<td style="text-align:center;">
+298.436397
+</td>
+<td style="text-align:center;">
+2.879928e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+58152.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1988
+</td>
+<td style="text-align:center;">
+926.488095
+</td>
+<td style="text-align:center;">
+1.487055e+04
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+400100.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1989
+</td>
+<td style="text-align:center;">
+130.236686
+</td>
+<td style="text-align:center;">
+1.169256e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+35562.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1990
+</td>
+<td style="text-align:center;">
+37.968415
+</td>
+<td style="text-align:center;">
+4.095728e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+10670.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1991
+</td>
+<td style="text-align:center;">
+84.077487
+</td>
+<td style="text-align:center;">
+5.903141e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+8487.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1992
+</td>
+<td style="text-align:center;">
+456.596849
+</td>
+<td style="text-align:center;">
+5.625640e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+149250.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1993
+</td>
+<td style="text-align:center;">
+4.603684
+</td>
+<td style="text-align:center;">
+3.832958e+01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+388.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1994
+</td>
+<td style="text-align:center;">
+561.488397
+</td>
+<td style="text-align:center;">
+6.941919e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+146400.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1995
+</td>
+<td style="text-align:center;">
+226.479911
+</td>
+<td style="text-align:center;">
+2.528969e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+64193.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1996
+</td>
+<td style="text-align:center;">
+619.248672
+</td>
+<td style="text-align:center;">
+8.214360e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+206202.6
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1997
+</td>
+<td style="text-align:center;">
+28.388770
+</td>
+<td style="text-align:center;">
+1.857458e+02
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+2400.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1998
+</td>
+<td style="text-align:center;">
+86.414995
+</td>
+<td style="text-align:center;">
+6.367987e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+12606.5
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+1999
+</td>
+<td style="text-align:center;">
+364.480815
+</td>
+<td style="text-align:center;">
+4.836924e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+132208.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2000
+</td>
+<td style="text-align:center;">
+1306.808853
+</td>
+<td style="text-align:center;">
+9.546501e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+172135.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2001
+</td>
+<td style="text-align:center;">
+136.696978
+</td>
+<td style="text-align:center;">
+1.110011e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+23647.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2002
+</td>
+<td style="text-align:center;">
+67.104286
+</td>
+<td style="text-align:center;">
+5.105572e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+8140.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2003
+</td>
+<td style="text-align:center;">
+268.583805
+</td>
+<td style="text-align:center;">
+1.932395e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+37842.5
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2004
+</td>
+<td style="text-align:center;">
+19.516753
+</td>
+<td style="text-align:center;">
+1.529284e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+2911.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2005
+</td>
+<td style="text-align:center;">
+726.635740
+</td>
+<td style="text-align:center;">
+8.174019e+03
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+192846.1
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2006
+</td>
+<td style="text-align:center;">
+703.997565
+</td>
+<td style="text-align:center;">
+7.584019e+03
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+220042.1
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2007
+</td>
+<td style="text-align:center;">
+3156.391578
+</td>
+<td style="text-align:center;">
+2.536091e+04
+</td>
+<td style="text-align:center;">
+0.33
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+590620.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2008
+</td>
+<td style="text-align:center;">
+202.694256
+</td>
+<td style="text-align:center;">
+1.996271e+03
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+37725.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2009
+</td>
+<td style="text-align:center;">
+19.462970
+</td>
+<td style="text-align:center;">
+1.020285e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+1264.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2010
+</td>
+<td style="text-align:center;">
+900.163299
+</td>
+<td style="text-align:center;">
+1.403900e+04
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+306113.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2011
+</td>
+<td style="text-align:center;">
+560.548755
+</td>
+<td style="text-align:center;">
+4.059884e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+67061.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2012
+</td>
+<td style="text-align:center;">
+2785.534728
+</td>
+<td style="text-align:center;">
+1.896190e+04
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+275960.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2013
+</td>
+<td style="text-align:center;">
+753.153707
+</td>
+<td style="text-align:center;">
+7.694348e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+135231.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2014
+</td>
+<td style="text-align:center;">
+283.650769
+</td>
+<td style="text-align:center;">
+3.165187e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+65200.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2015
+</td>
+<td style="text-align:center;">
+699.750759
+</td>
+<td style="text-align:center;">
+4.816536e+03
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+95709.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Natural
+</td>
+<td style="text-align:center;width: 20em; ">
+2016
+</td>
+<td style="text-align:center;">
+596.596857
+</td>
+<td style="text-align:center;">
+3.537826e+03
+</td>
+<td style="text-align:center;">
+0.45
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+39813.0
+</td>
+<td style="text-align:center;">
+0.01
+</td>
+<td style="text-align:center;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Undetermined
+</td>
+<td style="text-align:center;width: 20em; ">
+2007
+</td>
+<td style="text-align:center;">
+0.300000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.3
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Undetermined
+</td>
+<td style="text-align:center;width: 20em; ">
+2008
+</td>
+<td style="text-align:center;">
+0.500000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.5
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+<td style="text-align:center;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Undetermined
+</td>
+<td style="text-align:center;width: 20em; ">
+2010
+</td>
+<td style="text-align:center;">
+1801.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+1801.00
+</td>
+<td style="text-align:center;">
+1801.00
+</td>
+<td style="text-align:center;">
+1801.0
+</td>
+<td style="text-align:center;">
+1801.00
+</td>
+<td style="text-align:center;">
+1801.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Undetermined
+</td>
+<td style="text-align:center;width: 20em; ">
+2012
+</td>
+<td style="text-align:center;">
+0.100000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.1
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Undetermined
+</td>
+<td style="text-align:center;width: 20em; ">
+2013
+</td>
+<td style="text-align:center;">
+0.300000
+</td>
+<td style="text-align:center;">
+1.414214e-01
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.4
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1980
+</td>
+<td style="text-align:center;">
+25.000000
+</td>
+<td style="text-align:center;">
+2.121320e+01
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+40.0
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1981
+</td>
+<td style="text-align:center;">
+10.750000
+</td>
+<td style="text-align:center;">
+1.950000e+01
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+40.0
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1982
+</td>
+<td style="text-align:center;">
+1.000000
+</td>
+<td style="text-align:center;">
+0.000000e+00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.0
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1983
+</td>
+<td style="text-align:center;">
+300.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+300.00
+</td>
+<td style="text-align:center;">
+300.00
+</td>
+<td style="text-align:center;">
+300.0
+</td>
+<td style="text-align:center;">
+300.00
+</td>
+<td style="text-align:center;">
+300.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1984
+</td>
+<td style="text-align:center;">
+10.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+10.0
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+<td style="text-align:center;">
+10.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1985
+</td>
+<td style="text-align:center;">
+108.250000
+</td>
+<td style="text-align:center;">
+2.531610e+02
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+734.0
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+25.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1986
+</td>
+<td style="text-align:center;">
+80.500000
+</td>
+<td style="text-align:center;">
+1.124300e+02
+</td>
+<td style="text-align:center;">
+80.50
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+160.0
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+80.50
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1988
+</td>
+<td style="text-align:center;">
+7.750000
+</td>
+<td style="text-align:center;">
+8.539126e+00
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+20.0
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+5.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1989
+</td>
+<td style="text-align:center;">
+20.000000
+</td>
+<td style="text-align:center;">
+2.000000e+01
+</td>
+<td style="text-align:center;">
+20.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+40.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+20.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1991
+</td>
+<td style="text-align:center;">
+0.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1993
+</td>
+<td style="text-align:center;">
+840.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+840.00
+</td>
+<td style="text-align:center;">
+840.00
+</td>
+<td style="text-align:center;">
+840.0
+</td>
+<td style="text-align:center;">
+840.00
+</td>
+<td style="text-align:center;">
+840.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1994
+</td>
+<td style="text-align:center;">
+314.400000
+</td>
+<td style="text-align:center;">
+5.443836e+02
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+943.0
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1995
+</td>
+<td style="text-align:center;">
+54.525000
+</td>
+<td style="text-align:center;">
+1.089833e+02
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+218.0
+</td>
+<td style="text-align:center;">
+0.00
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1996
+</td>
+<td style="text-align:center;">
+3.100000
+</td>
+<td style="text-align:center;">
+4.242641e+00
+</td>
+<td style="text-align:center;">
+3.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+6.1
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+3.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+1997
+</td>
+<td style="text-align:center;">
+0.800000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+0.8
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+2000
+</td>
+<td style="text-align:center;">
+29.000000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+29.00
+</td>
+<td style="text-align:center;">
+29.00
+</td>
+<td style="text-align:center;">
+29.0
+</td>
+<td style="text-align:center;">
+29.00
+</td>
+<td style="text-align:center;">
+29.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;width: 20em; ">
+2002
+</td>
+<td style="text-align:center;">
+0.100000
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.1
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>VISUALIZACIÓN DE ACRES QUEMADOS EN RESPUESTA EL TIEMPO</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="fu">ggplot</span>(df_ejercicio1,</span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> AÑO_INCENDIO,</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a>           <span class="at">y =</span> Media_acres,</span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>           <span class="at">color =</span> CAUSA_INCENDIO)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1980</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-8"><a href="index.html#cb3-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Acres quemados por causa en Idaho&quot;</span>,</span>
+<span id="cb3-9"><a href="index.html#cb3-9" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Año&quot;</span>,</span>
+<span id="cb3-10"><a href="index.html#cb3-10" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Acres quemados&quot;</span></span>
+<span id="cb3-11"><a href="index.html#cb3-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="index.html#cb3-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>El gráfico de líneas múltiples presentado anteriormente muestra la tendencia temporal de la media de acres quemados a lo largo de los años en el estado de Idaho, diferenciada según la causa del incendio. A partir del gráfico, se puede inferir que los incendios de origen natural son los que generan, en general, mayores pérdidas de superficie quemada a lo largo del tiempo. Esto se evidencia en que la línea verde, correspondiente a los incendios naturales, presenta los valores más altos y los picos más pronunciados en comparación con las demás causas. No obstante, se observan excepciones en algunos periodos específicos, como entre 1986 y 1989 y en el año 2016, donde los humanos fueron los que causaron valores elevados de acres quemados. Por otro lado, alrededor del año 2010 se presentó una mayor perdida de ejemplares por causa indeterminada y la linea de tendencia gris no se puede describir porque contempla datos NA.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="ejercicio-2.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

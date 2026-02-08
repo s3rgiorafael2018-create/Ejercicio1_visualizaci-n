@@ -1,0 +1,16 @@
+tab:unnamed-chunk-3
+ejercicio-1
+carga-de-datos
+desarrollo
+ejercicio-2
+carga-de-datos-1
+desarrollo-1
+inciso-1
+inciso-2
+inciso-3
+inciso-4
+ejercicio-para-entregar
+carga-de-datos-2
+desarrollo-2
+tab:unnamed-chunk-5
+tab:unnamed-chunk-8
